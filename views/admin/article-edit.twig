@@ -1,0 +1,31 @@
+{% extends 'templates/admin.twig' %}
+
+{% block title %}Edit Article -{% endblock %}
+
+{% block PageHeader %}Edit Article <small>Edit your moments</small>{% endblock %}
+
+{% block breadcrumb %}edit{% endblock %}
+
+{% block content %}
+    <div class="box box-default">
+        <form role="form" method="post" action="/admin/article/{{ article.id }}/edit">
+            <div class="box-body">
+                <div class="form-group {{ errors.title ? 'has-error' : '' }}">
+                    <input name="title" type="text" class="form-control" placeholder="Title" value="{{ article.title }}">
+                    {% if errors.title %}
+                        <span class="help-block">{{ errors.title|first}}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group {{ errors.content ? 'has-error' : '' }}">
+                    <textarea name="content" class="form-control" placeholder="Content" rows="10">{{ article.content }}</textarea>
+                    {% if errors.content %}
+                        <span class="help-block">{{ errors.content|first}}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default center-block">Update</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

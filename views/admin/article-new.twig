@@ -1,0 +1,31 @@
+{% extends 'templates/admin.twig' %}
+
+{% block title %}New Article -{% endblock %}
+
+{% block PageHeader %}New Article <small>Share your moments</small>{% endblock %}
+
+{% block breadcrumb %}new{% endblock %}
+
+{% block content %}
+    <div class="box box-default">
+        <form role="form" method="post" action="{{ path_for('admin.article.new') }}">
+            <div class="box-body">
+                <div class="form-group {{ errors.title ? 'has-error' : '' }}">
+                    <input name="title" type="text" class="form-control" placeholder="Title" value="{{ old.title }}">
+                    {% if errors.title %}
+                        <span class="help-block">{{ errors.title|first}}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group {{ errors.content ? 'has-error' : '' }}">
+                    <textarea name="content" class="form-control" placeholder="Content" rows="10" value="{{ old.title }}"></textarea>
+                    {% if errors.content %}
+                        <span class="help-block">{{ errors.content|first}}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default center-block">Publish</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

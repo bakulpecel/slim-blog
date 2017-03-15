@@ -1,0 +1,37 @@
+{% extends 'templates/admin.twig' %}
+
+{% block title %}Trash -{% endblock %}
+
+{% block PageHeader %}Trash <small>This is a list of articles which does'nt yet permanently delete</small>{% endblock %}
+
+{% block breadcrumb %}trash{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <div class="box-body no-padding">
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th style="width: 40px">Restore</th>
+                    <th style="width: 40px">Delete</th>
+                </tr>
+                {% for article in data['trash'] %}
+                    <tr>
+                        <td>{{ article.title }}</td>
+                        <td class="text-center"><a href="/admin/article/{{ article.id }}/restore"><i class="fa fa-undo"></i></a></td>
+                        <td class="text-center"><a href="/admin/article/{{ article.id }}/hard-delete"><i class="fa fa-trash-o"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

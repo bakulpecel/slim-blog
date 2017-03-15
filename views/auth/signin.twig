@@ -1,0 +1,20 @@
+{% extends 'templates/auth.twig' %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            Sign in
+        </div>
+        <div class="panel-body">
+            <form method="post" autocomplete="off">
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-default center-block">Sign in</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
